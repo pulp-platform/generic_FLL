@@ -22,5 +22,3 @@ sources:
       - fe/rtl/FLL_settling_monitor.vhd
       - fe/rtl/FLL_synchroedge.vhd
       - fe/rtl/FLL_zerodelta.vhd
-
-
