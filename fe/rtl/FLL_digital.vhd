@@ -281,14 +281,14 @@ architecture rtl of FLL_digital is
 
   component FLL_reg
     generic (
-      MASK    : std_logic_vector(32-1 downto 0);
-      DEFAULT : std_logic_vector(32-1 downto 0));
+      MASK          : std_logic_vector(32-1 downto 0);
+      DEFAULT_PARAM : std_logic_vector(32-1 downto 0));
     port (
-      Data_DI : in  std_logic_vector(32-1 downto 0);
-      Data_DO : out std_logic_vector(32-1 downto 0);
-      Ena_SI  : in  std_logic;
-      Clk_CI  : in  std_logic;
-      Rst_RBI : in  std_logic);
+      Data_DI       : in  std_logic_vector(32-1 downto 0);
+      Data_DO       : out std_logic_vector(32-1 downto 0);
+      Ena_SI        : in  std_logic;
+      Clk_CI        : in  std_logic;
+      Rst_RBI       : in  std_logic);
   end component;
 
   component FLL_zerodelta
@@ -672,50 +672,50 @@ begin
   -- this is not an always on register
   i_statusreg : FLL_reg
     generic map(
-      MASK    => STS_REG1_MASK,
-      DEFAULT => STS_REG1_DEFAULT)
+      MASK          => STS_REG1_MASK,
+      DEFAULT_PARAM => STS_REG1_DEFAULT)
     port map (
-      Data_DI => ActMultFactorIn_D,
-      Data_DO => ActMultFactorOut_D,
-      Ena_SI  => StsRegEn_S,
-      Clk_CI  => REFCLK,
-      Rst_RBI => RSTB);
+      Data_DI       => ActMultFactorIn_D,
+      Data_DO       => ActMultFactorOut_D,
+      Ena_SI        => StsRegEn_S,
+      Clk_CI        => REFCLK,
+      Rst_RBI       => RSTB);
 
   -- always-on register
   i_cfgreg_1_ao : FLL_reg
     generic map (
-      MASK    => CFG_REG1_MASK,
-      DEFAULT => CFG_REG1_DEFAULT)
+      MASK          => CFG_REG1_MASK,
+      DEFAULT_PARAM => CFG_REG1_DEFAULT)
     port map (
-      Data_DI => CfgReg1In_D,
-      Data_DO => CfgReg1Out_D,
-      Ena_SI  => CfgReg1En_S,
-      Clk_CI  => CfgClk_C,
-      Rst_RBI => RSTB);
+      Data_DI       => CfgReg1In_D,
+      Data_DO       => CfgReg1Out_D,
+      Ena_SI        => CfgReg1En_S,
+      Clk_CI        => CfgClk_C,
+      Rst_RBI       => RSTB);
 
   -- always-on register
   i_cfgreg_2_ao : FLL_reg
     generic map (
-      MASK    => CFG_REG2_MASK,
-      DEFAULT => CFG_REG2_DEFAULT)
+      MASK          => CFG_REG2_MASK,
+      DEFAULT_PARAM => CFG_REG2_DEFAULT)
     port map (
-      Data_DI => CfgReg2In_D,
-      Data_DO => CfgReg2Out_D,
-      Ena_SI  => CfgReg2En_S,
-      Clk_CI  => CfgClk_C,
-      Rst_RBI => RSTB);
+      Data_DI       => CfgReg2In_D,
+      Data_DO       => CfgReg2Out_D,
+      Ena_SI        => CfgReg2En_S,
+      Clk_CI        => CfgClk_C,
+      Rst_RBI       => RSTB);
 
   -- always-on register
   i_intreg_ao : FLL_reg
     generic map(
-      MASK    => INT_REG_MASK,
-      DEFAULT => INT_REG_DEFAULT)
+      MASK          => INT_REG_MASK,
+      DEFAULT_PARAM => INT_REG_DEFAULT)
     port map (
-      Data_DI => IntRegIn_D,
-      Data_DO => IntRegOut_D,
-      Ena_SI  => IntRegEn_S,
-      Clk_CI  => CfgClk_C,
-      Rst_RBI => RSTB);
+      Data_DI       => IntRegIn_D,
+      Data_DO       => IntRegOut_D,
+      Ena_SI        => IntRegEn_S,
+      Clk_CI        => CfgClk_C,
+      Rst_RBI       => RSTB);
 
 
 

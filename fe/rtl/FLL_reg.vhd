@@ -33,7 +33,7 @@ use ieee.numeric_std.all;
 entity FLL_reg is
   generic(
     MASK : std_logic_vector(32-1 downto 0);
-    DEFAULT : std_logic_vector(32-1 downto 0)
+    DEFAULT_PARAM : std_logic_vector(32-1 downto 0)
     );
   port(
     Data_DI : in  std_logic_vector(32-1 downto 0);
@@ -57,7 +57,7 @@ begin
   update : process (Clk_CI, Rst_RBI) is
   begin  -- process update_cfg_regs
     if Rst_RBI = '0' then             -- asynchronous reset (active low)
-      Reg_DP <= DEFAULT;
+      Reg_DP <= DEFAULT_PARAM;
     elsif Clk_CI'event and Clk_CI = '1' then  -- rising clock edge
       if Ena_SI = '1' then
         Reg_DP <= Reg_DN and MASK;
